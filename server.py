@@ -8,7 +8,6 @@ import requests
 
 PORT = 8080
 
-
 with open('user-account.json') as json_data:
     jsonUser = json.load(json_data)
     json_data.close()
@@ -35,7 +34,6 @@ server_last_pos = (47.39774, 8.545593, 0)
 last_sensor = 0
 
 point = 0
-
 
 class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
@@ -68,8 +66,6 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
         obj = json.loads(response.text)
         last_sensor = obj['intensity']
-        # print json.dumps(obj, indent=2, sort_keys=True)
-        #print obj['intensity']
         return obj['intensity']
 
     def do_GET(self):
