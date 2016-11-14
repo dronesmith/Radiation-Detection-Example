@@ -4,10 +4,10 @@ Sample Python app that uses the Dronesmith API to find a radiation source in a d
 #Instructions
 
 1. Create a virtual drone on your account
-POST api.dronesmith.io/api/drone/<drone-name>
+POST api.dronesmith.io/api/drone/drone-name
 
 2. Add a radiation sensor to your newly created or existing virtual drone
-POST api.dronesmith.io/api/drone/<drone-name>/radiation_sensor
+POST api.dronesmith.io/api/drone/drone-name/radiation_sensor
 BODY 
 {
   "intensity": 0
