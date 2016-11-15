@@ -47,4 +47,4 @@ If you're on windows, you may need to run `python -m pip` instead of just pip.
 
 ## Full Tutorial
 
-If you'd like a more comprehensive tutorial on how to use this, see our [Radiation App Tutorial]('http://readme.dronesmith.io/docs/radiation-sensor-drone').
+If you'd like a more comprehensive tutorial on how to use this, see our [Radiation App Tutorial](http://readme.dronesmith.io/docs/radiation-sensor-drone).
