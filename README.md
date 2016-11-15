@@ -31,7 +31,7 @@ Install python requests module
 `pip install requests`
 If you're on windows, you may need to run `python -m pip` instead of just pip.
 
-# How to Run
+## How to Run
 
   1. Dronesmith API: Create a virtual drone on your account. Use the following REST request: `POST api.dronesmith.io/api/drone/<drone-name>`
 
@@ -45,6 +45,6 @@ If you're on windows, you may need to run `python -m pip` instead of just pip.
 
   6. Go to http://localhost:8080 in your browser.
 
-# Full Tutorial
+## Full Tutorial
 
 If you'd like a more comprehensive tutorial on how to use this, see our [Radiation App Tutorial]('http://readme.dronesmith.io/docs/radiation-sensor-drone').
