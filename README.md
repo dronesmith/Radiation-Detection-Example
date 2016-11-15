@@ -4,7 +4,7 @@
   </a>
 </div>
 
-# Radiation Sensor Example
+# Radiation Detection Example
 This sample Python app uses the Dronesmith API to find a radiation source in a defined area.
 
 This app has two parts - a server and a web interface. The server (`server.py`) gets position and sensor data from your drone and pushes this info to the web interface. The web interface takes this data, plots the drone position and displays drone data using Google Maps, along with the value of the radiation source using a heatmap.
