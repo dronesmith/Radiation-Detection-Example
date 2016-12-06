@@ -55,8 +55,8 @@ A = {'lat':47.399091, 'lon':8.549200}
 B = {'lat':47.398670, 'lon':8.551243}
 C = {'lat':47.396707, 'lon':8.550953}
 # Previous values
-last_position = (47.39774, 8.545593, 0)
-server_last_pos = (47.39774, 8.545593, 0)
+last_position = (47.39774, 8.545594, 0)
+server_last_pos = (47.39774, 8.545594, 0)
 last_sensor = 0
 
 point = 0
@@ -122,6 +122,46 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 
 # Drone commands
+def start(latitude, longitude):
+
+    #Altitude is relative
+    try:
+        response = requests.post('http://api.dronesmith.io/api/drone/'\
+        + DRONE_NAME + '/start', json={
+                "lat": latitude,
+	            "lon": longitude
+            }, headers=headers, timeout=5)
+    except requests.exceptions.RequestException as e:
+        print e
+        print "Start exception"
+        return False
+    obj = json.loads(response.text)
+    if response.status_code == 200 :
+        print "Start command worked"
+        return True
+    else:
+        return False
+def stop():
+
+    i = 0
+    while True:
+        try:
+            response = requests.post('http://api.dronesmith.io/api/drone/'\
+            + DRONE_NAME + '/stop', headers=headers, timeout=5)
+            obj = json.loads(response.text)
+            if response.status_code == 200 :
+                print "Stop command worked"
+                return True
+            else:
+                return False
+        except requests.exceptions.RequestException as e:
+            print e
+            print "Stop exception. Retrying command..."
+            if i<3:
+                i += 1
+                continue
+            else:
+                return False
 def get_position():
     global last_position
     try:
@@ -247,28 +287,42 @@ def constrainSync(target, typeVal, threshold, timeout):
 
 
 # MAIN
-# Takeoff, follow a path, and land.
+# Start drone, takeoff, follow a path, land, and stop drone.
 def droneWorker():
     # Wait for HTTP server to start displaying data
-    time.sleep(1)
+    time.sleep(3)
 
+    #Start drone
+    if not start(HOME['lat'], HOME['lon']):
+        "Something went wrong"
+        raise SystemExit
+        return
+
+    # Give virtual drone time to start
+    time.sleep(20)
+
+    #Takeoff
     if not takeoff(20):
-        abort()
+        "Something went wrong"
+        stop()
         return
 
     if not constrainSync(20, 'alt', 1, 200):
-        abort()
+        "Something went wrong"
+        stop()
         print 'Could not takeoff'
         return
 
     time.sleep(1)
     # Go to A
     if not goto(A['lat'], A['lon'], 0):
-        abort()
+        "Something went wrong"
+        stop()
         print
 
     if not constrainSync((A['lat'], A['lon']), 'loc', .00005, 200):
-        abort()
+        "Something went wrong"
+        stop()
         print 'Could not goto'
         return
 
@@ -276,11 +330,13 @@ def droneWorker():
 
     #Go to B
     if not goto(B['lat'], B['lon'], 0):
-        abort()
+        "Something went wrong"
+        stop()
         print
 
     if not constrainSync((B['lat'], B['lon']), 'loc', .00005, 200):
-        abort()
+        "Something went wrong"
+        stop()
         print 'Could not goto'
         return
 
@@ -288,36 +344,47 @@ def droneWorker():
 
     #Go to C
     if not goto(C['lat'], C['lon'], 0):
-        abort()
+        "Something went wrong"
+        stop()
         print
 
     if not constrainSync((C['lat'], C['lon']), 'loc', .00005, 200):
-        abort()
+        "Something went wrong"
+        stop()
         print 'Could not goto'
         return
 
     time.sleep(1)
     #Go to HOME
     if not goto(HOME['lat'], HOME['lon'], 0):
-        abort()
+        "Something went wrong"
+        stop()
         print
 
     if not constrainSync((HOME['lat'], HOME['lon']), 'loc', .00005, 200):
-        abort()
+        "Something went wrong"
+        stop()
         print 'Could not goto'
         return
 
     time.sleep(1)
 
+    #Land
     if not land():
-        abort()
+        "Something went wrong"
+        stop()
         return
 
     if not constrainSync(0, 'land', 1, 200):
-        abort()
+        "Something went wrong"
+        stop()
         print 'Could not land'
         return
 
+    time.sleep(1)
+
+    #Stop drone
+    stop()
 
 worker = threading.Thread(target=droneWorker)
 worker.start()

@@ -90,7 +90,7 @@
            // update heat map
            var points = heatmap.get('data');
 
-           points.push({location: latlng, weight: data.intensity});
+           points.push({location: latlng, weight: data.intensity*10});
 
            // Center on coordinate
            //  map.panTo(latlng);
