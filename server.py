@@ -50,14 +50,13 @@ headers = {
 }
 
 # Waypoints
-HOME = {'lat':40.742, 'lon': -73.987595}
-A = {'lat':40.744132, 'lon':-73.988262} 
-B = {'lat':40.744173, 'lon':-73.991851}
-C = {'lat':40.741482, 'lon':-73.991561}
-
+HOME = {'lat':47.39774, 'lon': 8.545594}
+A = {'lat':47.399091, 'lon':8.549200}
+B = {'lat':47.398670, 'lon':8.551243}
+C = {'lat':47.396707, 'lon':8.550953}
 # Previous values
-last_position = (40.742, -73.987595, 0)
-server_last_pos = (40.742, -73.987595, 0)
+last_position = (47.39774, 8.545593, 0)
+server_last_pos = (47.39774, 8.545593, 0)
 last_sensor = 0
 
 point = 0
