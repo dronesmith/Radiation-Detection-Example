@@ -16,7 +16,7 @@ The radiation app `radiation_sensor.py` represents a mock radiation sensor sourc
 * https://geopy.readthedocs.io/en/1.10.0/#data
 
 ## Dronesmith API
-[Sign up here](http://api.dronesmith.io/) to get a Dronesmith API account if you don't have one already. You will get an email within a couple of business days with your key. Contact [our support](http://community.dronesmith.io) if you don't receive your key within 5 business days
+[Sign up here](http://api.dronesmith.io/) to get a Dronesmith API account if you don't have one already. You will get an email within a couple of business days with your key. Contact [our support](http://community.dronesmith.io) if you don't receive your key within 5 business days.
 
 ## Prerequisites
 All that is needed for this tutorial is Python, python-pip, a Google API key, and a Dronesmith API account. This can be done on Mac, Windows, or Linux.
