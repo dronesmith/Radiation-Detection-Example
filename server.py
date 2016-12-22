@@ -27,14 +27,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import SocketServer
 import SimpleHTTPServer
-import json
+import requests
 import threading
 import time
 import math
-import requests
 
-PORT = 8080
-
+# Retrieve fields from user-account.json
 with open('user-account.json') as json_data:
     jsonUser = json.load(json_data)
     json_data.close()
@@ -43,22 +41,26 @@ USER_EMAIL = jsonUser[0]['email']
 USER_API_KEY = jsonUser[0]['api_key']
 DRONE_NAME = jsonUser[0]['drone_name']
 
+# Create headers object for API requests
 headers = {
     'user-email':       USER_EMAIL,
     'user-key':         USER_API_KEY,
     'Content-Type':     'application/json'
 }
 
+# Define server port
+PORT = 8080
+
 # Waypoints
 HOME = {'lat':47.39774, 'lon': 8.545594}
 A = {'lat':47.399091, 'lon':8.549200}
 B = {'lat':47.398670, 'lon':8.551243}
 C = {'lat':47.396707, 'lon':8.550953}
+
 # Previous values
 last_position = (47.39774, 8.545594, 0)
 server_last_pos = (47.39774, 8.545594, 0)
 last_sensor = 0
-
 point = 0
 
 class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
