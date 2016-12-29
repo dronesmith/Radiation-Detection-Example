@@ -43,11 +43,11 @@
   </head>
   <body >
     <div id="headsup" style="">
-      <p id="headsup-text">heads up text</p>
+      <p id="headsup-text"></p>
     </div>
     <main  id="map" class="ga-map" style="display"></main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAobHL5RFTMz12EEyQlMPTnZ178dSj7xA8&v=3.exp&libraries=visualization&callback=onGoogleReady" async defer></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAobHL5RFTMz12EEyQlMPTnZ178dSj7xA8&v=3.exp&libraries=visualization&callback=onGoogleReady" ></script>
 
     <script>
      // All code goes in here. Called when Google Maps API is initialized.
@@ -55,18 +55,11 @@
 
        // Init map
        var map = new google.maps.Map($('#map')[0], {
-         // vegas
+         // Zurich University
          center: new google.maps.LatLng(47.397865, 8.548388),
          zoom: 18,
          mapTypeId: google.maps.MapTypeId.ROADMAP
        });
-       var scale = .0001
-
-
-       heatmap = new google.maps.visualization.HeatmapLayer({
-          map: map
-       });
-
 
         // Flight path poly line
        var flightPath = new google.maps.Polyline({
@@ -83,14 +76,22 @@
        });
 
        setInterval(function() {
-         $.get('http://localhost:8080/gps',function(data) {
+         $.get('http://localhost:8080/data',function(data) {
+
            // Assume object returned is: {lat: <num>, lon: <num>} format
            var latlng = new google.maps.LatLng(data.lat, data.lon);
 
-           // update heat map
-           var points = heatmap.get('data');
-
-           points.push({location: latlng, weight: data.intensity*10});
+          // Add circle with a radius proportional to radiation intensity
+           var circle = new google.maps.Circle({
+                      strokeColor: '#00cc00',
+                      strokeOpacity: 0.3,
+                      strokeWeight: 2,
+                      fillColor: '#00ff00',
+                      fillOpacity: 0.3,
+                      map: map,
+                      center: latlng,
+                      radius: data.intensity*0.5
+                    });
 
            // Center on coordinate
            //  map.panTo(latlng);
