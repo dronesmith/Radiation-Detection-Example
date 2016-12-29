@@ -52,19 +52,19 @@ headers = {
 PORT = 8080
 
 # Waypoints
-HOME = {'lat':47.397429, 'lon': 8.547906}
-A = {'lat':47.399091, 'lon':8.549200}
+HOME = {'lat':47.397452, 'lon': 8.547774}
+A = {'lat':47.399112, 'lon':8.549034}, 
 B = {'lat':47.398670, 'lon':8.551243}
 C = {'lat':47.396707, 'lon':8.550953}
 
 # Previous values
-last_position = (47.397429, 8.547906, 0)
-server_last_pos = (47.397429, 8.547906, 0)
+last_position = (47.397452, 8.547774, 0)
+server_last_pos = (47.397452, 8.547774, 0)
 last_sensor = 0
 point = 0
 
 class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
-    
+
     def getPosition(self):
         global server_last_pos
         try:
