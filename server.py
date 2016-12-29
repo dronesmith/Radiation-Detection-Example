@@ -31,7 +31,7 @@ import requests
 import threading
 import time
 import math
-
+import json
 # Retrieve fields from user-account.json
 with open('user-account.json') as json_data:
     jsonUser = json.load(json_data)
@@ -52,20 +52,19 @@ headers = {
 PORT = 8080
 
 # Waypoints
-HOME = {'lat':47.39774, 'lon': 8.545594}
+HOME = {'lat':47.397429, 'lon': 8.547906}
 A = {'lat':47.399091, 'lon':8.549200}
 B = {'lat':47.398670, 'lon':8.551243}
 C = {'lat':47.396707, 'lon':8.550953}
 
 # Previous values
-last_position = (47.39774, 8.545594, 0)
-server_last_pos = (47.39774, 8.545594, 0)
+last_position = (47.397429, 8.547906, 0)
+server_last_pos = (47.397429, 8.547906, 0)
 last_sensor = 0
 point = 0
 
 class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
-
-
+    
     def getPosition(self):
         global server_last_pos
         try:
@@ -74,7 +73,7 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         except requests.exceptions.RequestException as e:
             print e
             print "Position exception"
-
+            # if request fails return last position
             return (server_last_pos[0], server_last_pos[1], server_last_pos[2])
 
         obj = json.loads(response.text)
@@ -86,7 +85,8 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     def getRadIntensity(self):
         global last_sensor
         try:
-            response = requests.get('http://api.dronesmith.io/api/drone/' + DRONE_NAME + '/sensor/radiation_sensor', headers=headers)
+            response = requests.get('http://api.dronesmith.io/api/drone/' \
+            + DRONE_NAME + '/sensor/radiation_sensor', headers=headers)
         except requests.exceptions.RequestException as e:
             print e
             print "Sensor exception"
@@ -98,7 +98,7 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         global point
-        if self.path == '/gps':
+        if self.path == '/data':
             self.send_response(200)
             self.send_header('Content-type','text/json')
             self.send_header("Access-Control-Allow-Origin", "*")
