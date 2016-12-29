@@ -3,13 +3,13 @@
     <img src="https://dl.dropboxusercontent.com/u/348929/slack.jpg" alt="" width="100%">
   </a>
 </div>
+This is an example project for the Dronesmith API from Dronesmith Technologies. The Dronesmith API is an HTTP requests based API that enables software first drone development.
 
 # Radiation Detection Example
 This sample Python app uses the Dronesmith API to find a radiation source in a defined area.
 
-This app has two parts - a server and a web interface. The server (`server.py`) gets position and sensor data from your drone and pushes this info to the web interface. The web interface takes this data, plots the drone position and displays drone data using Google Maps, along with the value of the radiation source using a heatmap.
 
-The radiation app `radiation_sensor.py` represents a mock radiation sensor source and runs as a seperate Python app. As both python scripts take advantage of the Dronesmith API, they need not be ran together.
+The file `radiation_sensor.py` represents a mock radiation sensor and runs as a seperate Python app. As both python scripts take advantage of the Dronesmith API, they need not be ran together.
 
 ## Tools
 * https://www.nde-ed.org/GeneralResources/Formula/RTFormula/InverseSquare/InverseSquareLaw.htm
@@ -19,7 +19,7 @@ The radiation app `radiation_sensor.py` represents a mock radiation sensor sourc
 [Sign up here](http://api.dronesmith.io/) to get a Dronesmith API account if you don't have one already. You will get an email within a couple of business days with your key. Contact [our support](http://community.dronesmith.io) if you don't receive your key within 5 business days.
 
 ## Prerequisites
-All that is needed for this tutorial is Python, python-pip, a Google API key, and a Dronesmith API account. This can be done on Mac, Windows, or Linux.
+All that is needed for this tutorial is Python, a Google API key, and a Dronesmith API account. This can be done on Mac, Windows, or Linux.
 
 **Installing Python:** https://www.python.org/downloads/release/python-2712/
 
@@ -35,19 +35,26 @@ Install python requests module
 If you're on windows, you may need to run `python -m pip` instead of just pip.
 
 ## How to Run
+1. **Download or clone the Github project.**
 
-  1. Dronesmith API: Create a virtual drone on your account. Use the following REST request: `POST api.dronesmith.io/api/drone/<drone-name>`
+  https://github.com/dronesmith/Radiation-Detection-Example
 
-  2. Add a radiation sensor to your newly created or existing virtual drone. Use the following REST request: `POST api.dronesmith.io/api/drone/drone-name/radiation_sensor BODY {"intensity": 0}`
+2. **Add your email and Dronesmith API key to user.json.**
 
-  3. Add your account info to `user-account.json`.
+  Leave drone_name field blank.
 
-  4. Run `python radiation_sensor.py`.
+3. **Add your Google Developers API key to index.html.**
 
-  5. Run `python server.py` in seperate terminal.
+  Find the script with the map.googleapis.com source in the HTML body and add your key to the key field in the URL.
+```
+<script src="https://maps.googleapis.com/maps/api/js?key=ADD-KEY-HERE&v=3.exp&libraries=visualization&callback=onGoogleReady" async defer></script>
+```
+4. **Run drone_setup.py script.**
 
-  6. Go to http://localhost:8080 in your browser.
+  This will create a new virtual drone on your account and add a radiation sensor to it.
 
-## Full Tutorial
+5. **Start radiation_sensor.py and leave it running.**
 
-If you'd like a more comprehensive tutorial on how to use this, see our [Radiation App Tutorial](http://readme.dronesmith.io/docs/radiation-sensor-drone).
+6. **In another terminal run server.py.**
+
+7. **Go to http://localhost:8080**
