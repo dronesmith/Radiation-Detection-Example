@@ -41,14 +41,14 @@ If you're on windows, you may need to run `python -m pip` instead of just pip.
 
 2. **Add your email and Dronesmith API key to user.json.**
 
-  Leave drone_name field blank.
+  Leave drone_name field blank. 
 
 3. **Add your Google Developers API key to index.html.**
 
   Find the script with the map.googleapis.com source in the HTML body and add your key to the key field in the URL.
-```
-<script src="https://maps.googleapis.com/maps/api/js?key=ADD-KEY-HERE&v=3.exp&libraries=visualization&callback=onGoogleReady" async defer></script>
-```
+  ```
+  <script src="https://maps.googleapis.com/maps/api/js?key=ADD-KEY-HERE&v=3.exp&libraries=visualization&callback=onGoogleReady" async defer></script>
+  ```
 4. **Run drone_setup.py script.**
 
   This will create a new virtual drone on your account and add a radiation sensor to it.
