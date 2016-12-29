@@ -49,7 +49,7 @@ import time
 import math
 from geopy.distance import vincenty
 
-RAD_SOURCE = (47.397703, 8.550597)
+RAD_SOURCE = (47.397713, 8.550333)
 
 def calculateRadIntensity(lat, lon):
     # Use inverse square law to calculate radiation intensity
