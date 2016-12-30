@@ -1,47 +1,55 @@
-<div>
-  <a href="http://community.dronesmith.io" target="_blank">
-    <img src="https://dl.dropboxusercontent.com/u/348929/slack.jpg" alt="" width="100%">
-  </a>
-</div>
-This is an example project for the Dronesmith API from Dronesmith Technologies. The Dronesmith API is an HTTP requests based API that enables software first drone development.
+
+
+
 
 # Radiation Detection Example
-This sample Python app uses the Dronesmith API to find a radiation source in a defined area.
 
+This is an example app for the Dronesmith API from Dronesmith Technologies. The Dronesmith API is an HTTP requests based API that enables software first drone development. With the Dronesmith API you can test code on virtual drones that are built into the API and then deploy the same code on a real drone. This app uses a virtual drone to accomplish a task in a made up scenario.
 
-The file `radiation_sensor.py` represents a mock radiation sensor and runs as a seperate Python app. As both python scripts take advantage of the Dronesmith API, they need not be ran together.
+## The Scenario
+A deranged physics professor at Zurich University has been performing experiments in various buildings on the North side of the campus. Last night one of his experiments with radioactive materials went terribly wrong and the campus has become radioactive. Now it is up to you and your team to find the location of the failed experiment using a drone equipped with a radiation sensor.
 
-## Tools
-* https://www.nde-ed.org/GeneralResources/Formula/RTFormula/InverseSquare/InverseSquareLaw.htm
-* https://geopy.readthedocs.io/en/1.10.0/#data
+## The App
 
-## Dronesmith API
-[Sign up here](http://api.dronesmith.io/) to get a Dronesmith API account if you don't have one already. You will get an email within a couple of business days with your key. Contact [our support](http://community.dronesmith.io) if you don't receive your key within 5 business days.
+The app commands a virtual drone to fly in a path around the Zurich University campus while plotting the path on a map.  It also displays the value of radiation intensity at each point along the flight path.
 
 ## Prerequisites
-All that is needed for this tutorial is Python, a Google API key, and a Dronesmith API account. This can be done on Mac, Windows, or Linux.
+To run this app you need a Dronesmith API key. Go to [api.dronesmith.io](http://api.dronesmith.io/) to request an API key. In a few minutes you will receive an email with your key.
 
-**Installing Python:** https://www.python.org/downloads/release/python-2712/
+You also need a Google Developers API key.
+https://developers.google.com/maps/documentation/javascript/get-api-key
 
-**Note:** Make sure you are using Python 2.7, *not* Python 3. Type `python --version` in the command line to verify your version.
 
-**Getting a Google API Key:** https://developers.google.com/maps/documentation/javascript/get-api-key
 
-#### Install python pip module
-**Installing Python-pip**: https://pip.pypa.io/en/stable/installing/
+## Setup Python
 
-Install python requests module
-`pip install requests`
-If you're on windows, you may need to run `python -m pip` instead of just pip.
+Make sure you are using Python 2.7, not Python 3. Type python --version in the command line to verify your version.
 
-## How to Run
+If you're new to using Python, go through these two getting started exercises to set up your developer environment:
+
+http://learnpythonthehardway.org/book/ex0.html
+
+http://learnpythonthehardway.org/book/ex1.html
+
+**Install Python pip module:** https://pip.pypa.io/en/stable/installing/
+
+This should be included by default in latest Python version.
+
+**Install Python requests module:** `pip install requests`
+
+**Install Python geopy module:** `pip install geopy`
+
+If you're on windows, you may need to run python -m pip instead of just pip.
+
+
+## Running the App
 1. **Download or clone the Github project.**
 
   https://github.com/dronesmith/Radiation-Detection-Example
 
 2. **Add your email and Dronesmith API key to user.json.**
 
-  Leave drone_name field blank. 
+  Leave drone_name field blank.
 
 3. **Add your Google Developers API key to index.html.**
 
@@ -58,3 +66,11 @@ If you're on windows, you may need to run `python -m pip` instead of just pip.
 6. **In another terminal run server.py.**
 
 7. **Go to http://localhost:8080**
+
+<br/>
+
+<div>
+  <a href="http://community.dronesmith.io" target="_blank">
+    <img src="https://dl.dropboxusercontent.com/u/348929/slack.jpg" alt="" width="100%">
+  </a>
+</div>
