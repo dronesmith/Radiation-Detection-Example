@@ -106,6 +106,8 @@ If you're on windows, you may need to run python -m pip instead of just pip.
 
 7. **Go to http://localhost:8080**
 
+You should immediately see a Google Maps view. The drone marker will show in about 10 seconds after the page loads. The marker will not move until after the drone has taken off and reached the desired altitude. You should then see the drone take a lap around the campus.
+
 ## Helpful Links
 * [Dronesmith API Reference](http://readme.dronesmith.io/reference)
 * [Using Postman with the Dronesmith API](http://readme.dronesmith.io/docs/tutorial-dronesmith-api)
