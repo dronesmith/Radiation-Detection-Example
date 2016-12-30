@@ -7,9 +7,7 @@
 This is an example Python app for the Dronesmith API from Dronesmith Technologies. The Dronesmith API is an HTTP requests based API that enables software first drone development. With the Dronesmith API you can test code on virtual drones that are built into the API and then deploy the same code on a real drone. This app uses a virtual drone to accomplish a task in a made up scenario.
 
 <div>
-  <a href="http://community.dronesmith.io" target="_blank">
-    <img src="app_screenshot.png" alt="" width="100%">
-  </a>
+      <img src="app_screenshot.png" alt="" width="100%">
 </div>
 
 
@@ -23,9 +21,9 @@ The app commands a virtual drone to fly in a path around the Zurich University c
 The app in its current form will not find the radiation source. It is up to you modify the app to suit your strategy for finding the building with the radiation source.
 
 <div>
-  <a href="http://community.dronesmith.io" target="_blank">
+
     <img src="app_diagram.png" alt="" width="100%">
-  </a>
+
 </div>
 
 <br/>
@@ -107,6 +105,11 @@ If you're on windows, you may need to run python -m pip instead of just pip.
 7. **Go to http://localhost:8080**
 
 You should immediately see a Google Maps view. The drone marker will show in about 10 seconds after the page loads. The marker will not move until after the drone has taken off and reached the desired altitude. You should then see the drone take a lap around the campus.
+
+<div>
+      <img src="http://imgur.com/YTbGNoa" alt="" width="100%">
+</div>
+
 
 ## Helpful Links
 * [Dronesmith API Reference](http://readme.dronesmith.io/reference)
