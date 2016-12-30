@@ -106,7 +106,7 @@ If you're on windows, you may need to run python -m pip instead of just pip.
 
 You should immediately see a Google Maps view. The drone marker will show in about 10 seconds after the page loads. The marker will not move until after the drone has taken off and reached the desired altitude. You should then see the drone take a lap around the campus.
 
-[Imgur](http://i.imgur.com/YTbGNoa.gifv)
+<blockquote class="imgur-embed-pub" lang="en" data-id="YTbGNoa"><a href="//imgur.com/YTbGNoa">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
 ## Helpful Links
